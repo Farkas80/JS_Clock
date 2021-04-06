@@ -1,24 +1,29 @@
-const secondHand = document.querySelector('.second-hand');
-const minuteHand = document.querySelector('.minute-hand');
-const hourHand = document.querySelector('.hour-hand');
-
-function setDate () {
+function setDate (sec, min, hour, timeZone) {
     const now = new Date();
+    const actualDate = new Date(now.valueOf() + now.getTimezoneOffset() - timeZone * 60000);
+    const secondValue = document.querySelector(sec);
+    const minuteValue = document.querySelector(min);
+    const hourValue = document.querySelector(hour);
 
-    const seconds = now.getSeconds();
-    const secondsDegrees = ((seconds / 60) * 360) + 90;    
-    secondHand.style.transform = `rotate(${secondsDegrees}deg)`;
+    /*const seconds = actualDate.getSeconds();*/
+    const secondsDegrees = ((actualDate.getSeconds() / 60) * 360) + 90;    
+    secondValue.style.transform = `rotate(${secondsDegrees}deg)`;
 
-    const minutes = now.getMinutes();
-    const minutesDegrees = ((minutes / 60) * 360) + 90;
-    minuteHand.style.transform = `rotate(${minutesDegrees}deg)`;
+    /*const minutes = actualDate.getMinutes();*/
+    const minutesDegrees = ((actualDate.getMinutes() / 60) * 360) + 90;
+    minuteValue.style.transform = `rotate(${minutesDegrees}deg)`;
 
-    const hours = now.getHours();
-    const hoursDegrees = ((hours / 12) * 360) + 90;
-    hourHand.style.transform = `rotate(${hoursDegrees}deg)`;
+    /*const hours = actualDate.getHours();*/
+    const hoursDegrees = ((actualDate.getHours() / 12) * 360) + 90; 
+    hourValue.style.transform = `rotate(${hoursDegrees}deg)`;
 }
 
-setInterval(setDate, 1000);
+/*setInterval( function() { setDate('.second-hand', '.minute-hand', '.hour-hand', -60); } , 1000);
+setInterval( function() { setDate('.second-hand1', '.minute-hand1', '.hour-hand1', -120); } , 1000);
+setInterval( function() { setDate('.second-hand2', '.minute-hand2', '.hour-hand2', -180); } , 1000);*/
 
-setDate();
-
+setInterval( function() { 
+    setDate('.second-hand', '.minute-hand', '.hour-hand', -60);
+    setDate('.second-hand1', '.minute-hand1', '.hour-hand1', -120);
+    setDate('.second-hand2', '.minute-hand2', '.hour-hand2', -180);
+} , 1000);
