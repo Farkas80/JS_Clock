@@ -14,6 +14,11 @@ body {
     align-items: center;
 }
 
+.container {
+    display: flex;
+    width: 100%;
+}
+
 .clock {
     width: 30rem;
     height: 30rem;
@@ -46,4 +51,16 @@ body {
     transform: rotate(90deg);
     transition: all 0.05s;
     transition-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+.hour-hand, .hour-hand1, .hour-hand2 {
+    background-color: red;
+}
+
+.second-hand, .second-hand1, .second-hand2 {
+    background-color: green;
+}
+
+.minute-hand, .minute-hand1, .minute-hand2 {
+    background-color: rgb(238, 91, 218);
 }
